@@ -1,0 +1,128 @@
+/* styles.css — plain CSS, no frameworks. Built to read well at 375px wide
+   (a phone) with no sideways scrolling, and to spread out on a laptop. */
+
+:root {
+  --ink: #16202c;
+  --muted: #5a6876;
+  --line: #d9e0e8;
+  --panel: #f5f7fa;
+  --accent: #0b5a9e;
+  --good: #0d6b3f;
+  --warn: #8a4b00;
+  --bad: #9b1c1c;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 16px 48px;
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  overflow-x: hidden;           /* never scroll the page sideways */
+}
+
+main, .page-header, footer { max-width: 1100px; margin: 0 auto; }
+
+.page-header { padding: 24px 0 8px; border-bottom: 2px solid var(--ink); }
+h1 { margin: 0; font-size: 1.5rem; line-height: 1.2; }
+.sub { margin: 4px 0 12px; color: var(--muted); font-size: 0.9rem; }
+
+section { padding: 24px 0; border-bottom: 1px solid var(--line); }
+h2 { font-size: 1.2rem; margin: 0 0 8px; }
+h3 { font-size: 1rem; margin: 24px 0 6px; }
+h3:first-of-type { margin-top: 8px; }
+
+.q, .tag {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--muted);
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 999px; padding: 2px 8px; vertical-align: middle;
+  white-space: nowrap;
+}
+
+.note { color: var(--muted); font-size: 0.875rem; margin: 6px 0 12px; }
+.status { color: var(--muted); font-size: 0.875rem; font-style: italic; }
+code { background: var(--panel); padding: 1px 4px; border-radius: 3px; font-size: 0.85em; }
+
+/* ---------- tables ---------- */
+
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+caption { text-align: left; color: var(--muted); font-size: 0.8rem; padding-bottom: 6px; }
+
+th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: right; }
+thead th { background: var(--panel); border-bottom: 2px solid var(--line); white-space: nowrap; }
+th[scope="row"], td.label, thead th:first-child { text-align: left; }
+tbody tr.sub-total td, tbody tr.sub-total th { font-weight: 600; }
+tbody tr.rule td, tbody tr.rule th { border-top: 1px solid var(--ink); }
+td.na { color: var(--muted); }
+tr.highlight td, tr.highlight th { background: #eaf3fb; }
+td.flag { color: var(--bad); }
+
+/* On a laptop the two firms sit side by side. */
+.two-up { display: grid; gap: 24px; }
+/* min-width: 0 stops a wide table from pushing its grid column past the page. */
+.two-up > * { min-width: 0; }
+@media (min-width: 760px) { .two-up { grid-template-columns: 1fr 1fr; } }
+
+/* The CDSS tables carry a lot of columns, so they get tighter type. */
+table.stack { font-size: 0.8125rem; }
+table.stack th, table.stack td { padding: 6px 5px; }
+
+/* ---------- findings and alerts ---------- */
+
+.findings { margin: 10px 0 0; padding-left: 20px; font-size: 0.9rem; }
+.findings li { margin: 4px 0; }
+.findings li.ok::marker { color: var(--good); }
+.findings li.warn { color: var(--warn); }
+.findings li.bad { color: var(--bad); font-weight: 600; }
+
+.alerts { margin: 12px 0; }
+.alerts p {
+  margin: 6px 0; padding: 10px 12px; font-size: 0.9rem;
+  border-left: 4px solid var(--bad); background: #fdf1f1; color: var(--bad);
+}
+
+/* ---------- phone layout: wide tables become one card per row ---------- */
+
+@media (max-width: 899px) {
+  /* Tighter type so the narrow tables fit a 375px screen whole. */
+  table { font-size: 0.8125rem; }
+  th, td { padding: 5px 4px; }
+  thead th { white-space: normal; }   /* let "Average year" wrap instead of pushing out */
+
+  table.stack thead { display: none; }
+  table.stack tbody tr {
+    display: block;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 4px 10px;
+  }
+  table.stack tbody tr.highlight { border-color: var(--accent); }
+  table.stack td, table.stack th[scope="row"] {
+    display: flex; justify-content: space-between; gap: 12px;
+    border-bottom: 1px dotted var(--line); padding: 5px 0; text-align: right;
+  }
+  table.stack tbody tr > *:last-child { border-bottom: 0; }
+  table.stack td::before, table.stack th[scope="row"]::before {
+    content: attr(data-label);
+    color: var(--muted); font-weight: 400; text-align: left;
+    padding-right: 8px; white-space: nowrap;
+  }
+  table.stack th[scope="row"] {
+    font-size: 1rem; font-weight: 700;
+    border-bottom: 1px solid var(--line); margin-bottom: 2px;
+  }
+}

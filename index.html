@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGE Capital Structure — Campus Deli and Sub Shop</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="page-header">
+  <h1>Campus Deli and Sub Shop</h1>
+  <p class="sub">Capital structure analysis for Adams, Garitty, and Evans · FIN 4150</p>
+</header>
+
+<main>
+  <p id="status" class="status" role="status">Reading the data files…</p>
+  <div id="alerts" class="alerts" hidden></div>
+
+  <!-- ============ Question c: Firm U and Firm L ============ -->
+  <section id="example-firms">
+    <h2>Firm U and Firm L <span class="q">question c</span></h2>
+    <p class="note">
+      Two hypothetical firms with the same assets and the same EBIT. Firm U uses
+      no debt; Firm L borrows part of its money. <strong>Financial leverage</strong>
+      means using borrowed money, and the extra variation in shareholders' returns
+      that it causes is <strong>financial risk</strong>.
+      <span id="example-setup"></span>
+    </p>
+
+    <div class="two-up">
+      <div>
+        <h3>Firm U <span class="tag">no debt</span></h3>
+        <div class="table-wrap"><table id="firm-u-table"></table></div>
+      </div>
+      <div>
+        <h3>Firm L <span class="tag" id="firm-l-tag"></span></h3>
+        <div class="table-wrap"><table id="firm-l-table"></table></div>
+      </div>
+    </div>
+
+    <h3>Return and risk side by side</h3>
+    <div class="table-wrap"><table id="firm-stats-table"></table></div>
+    <p class="note" id="firm-stats-note"></p>
+  </section>
+
+  <!-- ============ Question d: CDSS at each amount of borrowing ============ -->
+  <section id="cdss">
+    <h2>CDSS at each amount of borrowing <span class="q">question d</span></h2>
+    <p class="note" id="cdss-setup"></p>
+
+    <h3>1 · Case method: shares bought back at today's $20</h3>
+    <p class="note">
+      Questions d(3) and d(4). Shares repurchased = D / $20. Because CDSS pays
+      out all its earnings, dividends per share = EPS and g = 0, so the price
+      afterwards is EPS / r<sub>s</sub>. WACC uses <strong>book weights</strong>
+      on total assets — the AGE solution's method for d(7).
+    </p>
+    <div class="table-wrap"><table id="case-table"></table></div>
+    <p class="note" id="case-rounding-note"></p>
+    <ul class="findings" id="case-findings"></ul>
+
+    <h3>2 · New-price method: shares bought back at the price after the announcement</h3>
+    <p class="note">
+      Value the equity first (S = net income / r<sub>s</sub>), add the debt for the
+      whole firm (V = S + D), and divide by the original 100,000 shares for the
+      price everyone sees once the plan is announced. The buyback then happens at
+      that price. WACC uses <strong>market weights</strong>.
+    </p>
+    <div class="table-wrap"><table id="newprice-table"></table></div>
+    <ul class="findings" id="newprice-findings"></ul>
+
+    <h3>3 · Where the two methods disagree</h3>
+    <div class="table-wrap"><table id="compare-table"></table></div>
+    <p class="note" id="compare-note"></p>
+  </section>
+
+  <section id="checks">
+    <h2>Checks</h2>
+    <ul class="findings" id="check-list"></ul>
+  </section>
+</main>
+
+<footer>
+  <p class="note">
+    Every figure on this page is read from the CSV files in <code>data/</code> and
+    worked out in your browser. The page makes no requests to any other website.
+  </p>
+</footer>
+
+<script src="capstruct.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
