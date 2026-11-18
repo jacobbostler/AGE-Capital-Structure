@@ -1,0 +1,16 @@
+{
+  "name": "AGE Capital Structure — Campus Deli and Sub Shop",
+  "short_name": "CDSS Capital",
+  "description": "Capital structure analysis for the AGE case: Firm U and Firm L, and CDSS at each amount of borrowing.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#0b5a9e",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ]
+}
