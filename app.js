@@ -570,3 +570,18 @@ async function main() {
 }
 
 document.addEventListener("DOMContentLoaded", main);
+
+/* ---------- make it installable and able to open offline ---------- */
+
+/* The service worker (sw.js) keeps a copy of the page and the CSVs, so the
+ * app opens without a connection. "sw.js" is relative, so it resolves under
+ * https://<username>.github.io/<repository>/ as well as on a local server.
+ * Registering after load keeps it from competing with the first paint. */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch((err) => {
+      /* Not fatal: without it the app still works, just not offline. */
+      console.warn("Service worker did not register:", err.message);
+    });
+  });
+}
