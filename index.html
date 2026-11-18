@@ -28,6 +28,14 @@
       <span id="example-setup"></span>
     </p>
 
+    <div class="controls">
+      <label for="firm-l-slider">Firm L's debt</label>
+      <input type="range" id="firm-l-slider" min="0" step="1" value="0">
+      <output id="firm-l-readout" for="firm-l-slider"></output>
+      <button type="button" id="firm-l-case">Case</button>
+    </div>
+    <p class="note" id="firm-l-rate-note"></p>
+
     <div class="two-up">
       <div>
         <h3>Firm U <span class="tag">no debt</span></h3>
@@ -49,11 +57,33 @@
     <h2>CDSS at each amount of borrowing <span class="q">question d</span></h2>
     <p class="note" id="cdss-setup"></p>
 
+    <div class="controls">
+      <label for="cdss-slider">CDSS's debt</label>
+      <input type="range" id="cdss-slider" min="0" step="1" value="0">
+      <output id="cdss-readout" for="cdss-slider"></output>
+      <button type="button" id="btn-best-price">Best price</button>
+      <button type="button" id="btn-best-eps">Highest EPS</button>
+    </div>
+    <p class="note" id="cdss-slider-note" aria-live="polite"></p>
+
+    <div class="two-up">
+      <div>
+        <h3>Case method <span class="tag">bought back at $20</span></h3>
+        <div class="table-wrap"><table id="case-panel"></table></div>
+        <p class="note" id="case-panel-note"></p>
+      </div>
+      <div>
+        <h3>New-price method <span class="tag">bought back after the announcement</span></h3>
+        <div class="table-wrap"><table id="newprice-panel"></table></div>
+        <p class="note" id="newprice-panel-note"></p>
+      </div>
+    </div>
+
     <h3>1 · Case method: shares bought back at today's $20</h3>
     <p class="note">
       Questions d(3) and d(4). Shares repurchased = D / $20. Because CDSS pays
       out all its earnings, dividends per share = EPS and g = 0, so the price
-      afterwards is EPS / r<sub>s</sub>. WACC uses <strong>book weights</strong>
+      afterwards is EPS / r_s. WACC uses <strong>book weights</strong>
       on total assets — the AGE solution's method for d(7).
     </p>
     <div class="table-wrap"><table id="case-table"></table></div>
@@ -62,7 +92,7 @@
 
     <h3>2 · New-price method: shares bought back at the price after the announcement</h3>
     <p class="note">
-      Value the equity first (S = net income / r<sub>s</sub>), add the debt for the
+      Value the equity first (S = net income / r_s), add the debt for the
       whole firm (V = S + D), and divide by the original 100,000 shares for the
       price everyone sees once the plan is announced. The buyback then happens at
       that price. WACC uses <strong>market weights</strong>.
